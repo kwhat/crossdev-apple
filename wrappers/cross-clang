@@ -1,0 +1,14 @@
+#!/bin/sh
+# Copyright 2014 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+
+if [ -z "${CHOST}" ] ; then
+	CHOST=${0##*/}
+	CHOST=${CHOST%-clang}
+	CHOST=${CHOST#clang-}
+
+	# clang targets cannot contain API versions.
+	# Ex: x86_64-apple-darwin9 >> x86_64-apple-darwin
+	CHOST=$(echo ${CHOST} | sed -e 's/[0-9]*$//')
+fi
+clang -target ${CHOST} $@
