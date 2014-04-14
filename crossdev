@@ -325,6 +325,14 @@ parse_target() {
 			KPKG="[none]";
 			;;
 
+		# Apple targets
+		*-darwin8)  KVER="10.4u";;
+		*-darwin9)  KVER="10.5";;
+		*-darwin10) KVER="10.6";;
+		*-darwin11) KVER="10.7";;
+		*-darwin12) KVER="10.8";;
+		*-darwin13) KVER="10.9";;
+
 		# Bare metal targets
 		*-newlib|*-elf|*-eabi)
 			LPKG="newlib"
