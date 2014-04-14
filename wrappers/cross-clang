@@ -6,9 +6,10 @@ if [ -z "${CHOST}" ] ; then
 	CHOST=${0##*/}
 	CHOST=${CHOST%-clang}
 	CHOST=${CHOST#clang-}
-
-	# clang targets cannot contain API versions.
-	# Ex: x86_64-apple-darwin9 >> x86_64-apple-darwin
-	CHOST=$(echo ${CHOST} | sed -e 's/[0-9]*$//')
 fi
-clang -target ${CHOST} $@
+
+# clang targets cannot contain API versions.
+# Ex: x86_64-apple-darwin9 >> x86_64-apple-darwin
+CTARGET=$(echo ${CHOST} | sed -e 's/[0-9]*$//')
+
+clang -target ${CTARGET} -isysroot /usr/${CHOST} $@
