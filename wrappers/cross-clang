@@ -12,4 +12,4 @@ fi
 # Ex: x86_64-apple-darwin9 >> x86_64-apple-darwin
 CTARGET=$(echo ${CHOST} | sed -e 's/[0-9]*$//')
 
-clang -target ${CTARGET} -isysroot /usr/${CHOST} $@
+clang -target ${CTARGET} -isysroot /usr/${CHOST} -B/usr/libexec/gcc/${CHOST} $@
