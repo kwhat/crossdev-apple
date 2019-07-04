@@ -104,11 +104,6 @@ cross_wrap_bin()
 	for wrapper in emerge fix-root pkg-config ; do
 		ln -sf cross-${wrapper} ${CHOST}-${wrapper}
 	done
-	# process clang dependent hosts.
-	# FIXME This is kind of hackie, move to crossdev script?
-	case ${CHOST} in
-		*-darwin*) ln -sf cross-clang ${CHOST}-clang;;
-	esac
 	# some people like their tab completion
 	ln -sf cross-emerge emerge-${CHOST}
 	popd >/dev/null
