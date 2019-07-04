@@ -235,8 +235,8 @@ parse_target() {
 		      WITH_DEF_HEADERS="no";;
 
 		*-darwin*)
-		      KCAT="sys-devel"; KPKG="apple-sdk";
-		      BCAT="virtual";   BPKG="binutils-apple";
+		      KCAT="sys-darwin"; KPKG="apple-sdk";
+		      BCAT="sys-devel";   BPKG="binutils-apple";
 		      # FIXME llvm-gcc only needed for glibc, add check in case statement below
 		      GPKG="llvm";      GUSE="clang llvm-gcc multitarget";
 		      # TODO LPKG="libc-apple"; still need to port apple's libc
